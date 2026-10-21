@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDb, schema } from "@/lib/db";
+import { sendMail } from "@/lib/mail";
 import { partnerSchema } from "@/lib/validation";
 
 export const runtime = "nodejs";
@@ -41,6 +42,11 @@ export async function POST(request: Request) {
         message: d.message,
         consentAt: new Date(),
       });
+    await sendMail({
+      to: d.email,
+      subject: "Thanks for reaching out to Ryse",
+      text: `Hi ${d.full_name.split(/\s+/)[0]},\n\nThanks for getting in touch about working with Ryse. The partners reply within three working days.\n\nThe Ryse partners`,
+    }).catch((err) => console.error("Failed to send partner confirmation", err));
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Failed to save partner inquiry", err);

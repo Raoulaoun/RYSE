@@ -25,3 +25,13 @@ export function LogoLockup() {
     </svg>
   );
 }
+
+// Standalone wordmark for pages outside the marketing site (admin panel).
+export function Wordmark({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 387.6 98.0" role="img" aria-label="Ryse">
+      <path d={RYSE_PATH} fill="currentColor" />
+      <rect className="dot" x="351.60" y="62.00" width="24.00" height="24.00" />
+    </svg>
+  );
+}

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getDb, schema } from "@/lib/db";
 import { eq } from "drizzle-orm";
 import { DECK_EXT, DECK_MAX_BYTES } from "@/lib/options";
+import { sendMail } from "@/lib/mail";
 import { applicationSchema } from "@/lib/validation";
 
 export const runtime = "nodejs";
@@ -135,8 +136,14 @@ export async function POST(request: Request) {
       const ref = refNo(row.id, now.getFullYear());
       await tx.update(schema.applications).set({ refNo: ref }).where(eq(schema.applications.id, row.id));
       if (deckRow) await tx.insert(schema.applicationDecks).values({ applicationId: row.id, ...deckRow });
+      await tx.insert(schema.applicationEvents).values({ applicationId: row.id, what: "Application submitted" });
       return ref;
     });
+    await sendMail({
+      to: d.email,
+      subject: `We received your application: ${ref}`,
+      text: `Hi ${d.full_name.split(/\s+/)[0]},\n\nThank you for applying to Ryse with ${d.startup_name}. Your reference number is ${ref}.\n\nWhat happens next:\n1. The partners review your application personally.\n2. If you're shortlisted, we invite you to pitch in person.\n3. You get a clear answer within 48 hours of your pitch.\n\nQuestions? Reply to this email.\n\nThe Ryse partners`,
+    }).catch((err) => console.error("Failed to send application confirmation", err));
     return NextResponse.json({ ok: true, refNo: ref });
   } catch (err) {
     console.error("Failed to save application", err);

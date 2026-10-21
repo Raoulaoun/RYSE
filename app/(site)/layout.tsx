@@ -1,11 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Unbounded } from "next/font/google";
 import { ScrollState } from "@/components/ScrollState";
+import { spaceGrotesk, unbounded } from "@/lib/fonts";
 import { SITE } from "@/lib/site";
 import "./globals.css";
-
-const unbounded = Unbounded({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-unbounded" });
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-space-grotesk" });
 
 const description =
   "Ryse invests early in ambitious founders, meets them in person, and decides within 48 hours. Capital, strategy and hands-on support for startups in Lebanon and the region.";
