@@ -43,13 +43,13 @@ export default function Home() {
             <div className="band">
               <div className="band-media">
                 <Image
-                  src="/images/hero-founder-pitch.jpg"
-                  alt="A founder pitching her startup to the partners"
-                  width={1500}
-                  height={1000}
+                  src="/images/hero.jpg"
+                  alt="Founders talking on a Beirut rooftop at golden hour"
+                  width={1600}
+                  height={685}
                   sizes="(min-width: 1200px) 1136px, 100vw"
                   preload
-                  style={{ objectPosition: "72% 30%" }}
+                  style={{ objectPosition: "50% 30%" }}
                 />
               </div>
               <div className="band-content">
