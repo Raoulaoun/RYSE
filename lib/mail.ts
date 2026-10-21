@@ -1,4 +1,4 @@
-// Transactional email through Resend's HTTP API. Without RESEND_API_KEY
+// Transactional email through Brevo's HTTP API. Without BREVO_API_KEY
 // (local development) messages are printed to the server log instead.
 
 type Mail = { to: string; subject: string; text: string; html?: string; replyTo?: string };
@@ -6,28 +6,34 @@ type Mail = { to: string; subject: string; text: string; html?: string; replyTo?
 export const MAIL_FROM = process.env.MAIL_FROM ?? "Ryse <hello@ryseventure.com>";
 
 export function mailConfigured() {
-  return Boolean(process.env.RESEND_API_KEY);
+  return Boolean(process.env.BREVO_API_KEY);
+}
+
+// "Ryse <hello@ryseventure.com>" -> { name: "Ryse", email: "hello@ryseventure.com" }
+function parseAddress(a: string) {
+  const m = /^\s*(.*?)\s*<([^>]+)>\s*$/.exec(a);
+  return m ? { name: m[1].replace(/^"|"$/g, "") || undefined, email: m[2] } : { email: a.trim() };
 }
 
 export async function sendMail(m: Mail): Promise<{ sent: boolean }> {
-  const key = process.env.RESEND_API_KEY;
+  const key = process.env.BREVO_API_KEY;
   if (!key) {
     console.info(`[mail:not-sent] to=${m.to} subject=${JSON.stringify(m.subject)}\n${m.text}`);
     return { sent: false };
   }
-  const res = await fetch("https://api.resend.com/emails", {
+  const res = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
-    headers: { authorization: `Bearer ${key}`, "content-type": "application/json" },
+    headers: { "api-key": key, "content-type": "application/json", accept: "application/json" },
     body: JSON.stringify({
-      from: MAIL_FROM,
-      to: [m.to],
+      sender: parseAddress(MAIL_FROM),
+      to: [{ email: m.to }],
       subject: m.subject,
-      text: m.text,
-      html: m.html ?? textToHtml(m.text),
-      reply_to: m.replyTo,
+      textContent: m.text,
+      htmlContent: m.html ?? textToHtml(m.text),
+      replyTo: m.replyTo ? { email: m.replyTo } : undefined,
     }),
   });
-  if (!res.ok) throw new Error(`Resend responded ${res.status}: ${await res.text()}`);
+  if (!res.ok) throw new Error(`Brevo responded ${res.status}: ${await res.text()}`);
   return { sent: true };
 }
 

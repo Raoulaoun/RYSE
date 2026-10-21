@@ -31,13 +31,13 @@ Checks: `npm run typecheck`, `npm run lint`, `npm run build`.
 
 ## Admin panel
 
-Partners sign in at `/admin/login` with an emailed one-time link (valid 15 minutes, sessions last 30 days). Access is by invitation only. Add the first partner from the command line, then invite the others from **Settings**:
+Partners sign in at `/admin/login` with an emailed one-time link (valid 15 minutes, sessions last 30 days). Access is by invitation only.
+
+The first partner comes from the `ADMIN_EMAIL` and `ADMIN_NAME` variables: each deploy makes sure that partner exists. Invite the others from **Settings**. Locally you can also run:
 
 ```bash
 npm run admin:add -- raoul@ryseventure.com "Raoul Aoun"
 ```
-
-On Railway, run it once from your machine with `railway run npm run admin:add -- …`, or paste the command into the service's shell.
 
 What the panel does:
 
@@ -51,10 +51,11 @@ What the panel does:
 
 ## Email
 
-Email goes through [Resend](https://resend.com): sign-in links, the confirmations the public forms promise, and decision emails. Set:
+Email goes through [Brevo](https://www.brevo.com)'s transactional API: sign-in links, the confirmations the public forms promise, and decision emails. Set:
 
-- `RESEND_API_KEY`: without it, emails are printed to the server log instead of sent (fine for local development)
-- `MAIL_FROM`: defaults to `Ryse <hello@ryseventure.com>`. The domain must be verified in Resend.
+- `BREVO_API_KEY`: from Brevo, **SMTP & API → API keys**. Without it, emails are printed to the server log instead of sent (fine for local development).
+- `MAIL_FROM`: defaults to `Ryse <hello@ryseventure.com>`. Authenticate `ryseventure.com` in Brevo (**Senders, domains & dedicated IPs → Domains**) so mail from it is delivered.
+- In Brevo **Security → Authorised IPs**, turn off IP blocking for API keys. Railway's outgoing IP changes between deploys, so a blocklist would reject the site's emails.
 - `APP_URL`: the public site URL used in emailed links. On Railway it falls back to the service's public domain.
 
 ## Database
@@ -74,11 +75,11 @@ To change the schema, edit `lib/db/schema.ts`, then run `npm run db:generate` an
 
 1. Create a Railway project, then add a **PostgreSQL** database to it.
 2. Add a service from this GitHub repo.
-3. In the service's **Variables**, add `DATABASE_URL` = `${{Postgres.DATABASE_URL}}`, plus `RESEND_API_KEY` and `APP_URL` (see Email).
+3. In the service's **Variables**, add `DATABASE_URL` = `${{Postgres.DATABASE_URL}}`, `BREVO_API_KEY`, `APP_URL`, `ADMIN_EMAIL` and `ADMIN_NAME`.
 4. Deploy. `railway.json` already configures:
    - build: `npm run build`
    - pre-deploy: `npm run db:migrate`, which applies any pending migrations before the new version goes live
    - start: `npm start`, which listens on Railway's `PORT`
    - health check on `/`
 5. Under **Settings → Networking**, generate a domain or attach `ryseventure.com`.
-6. Add the first partner with `npm run admin:add` (see Admin panel) and sign in at `/admin`.
+6. Sign in at `/admin` with `ADMIN_EMAIL`, then invite the other partners from **Settings**.

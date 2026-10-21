@@ -27,7 +27,7 @@ export default async function Settings() {
           <span>
             {mail
               ? `Sign-in links, confirmations and decisions send from ${MAIL_FROM}.`
-              : "Set RESEND_API_KEY on Railway to send sign-in links, confirmations and decisions."}
+              : "Set BREVO_API_KEY on Railway to send sign-in links, confirmations and decisions."}
           </span>
         </div>
       </section>
