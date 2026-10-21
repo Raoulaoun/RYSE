@@ -224,6 +224,7 @@ export const PORTFOLIO: Company[] = [
   },
   {
     slug: "beta",
+    image: { src: "/images/portfolio/beta.jpg", width: 904, height: 1500 },
     name: "Beta Investment Group",
     logo: "beta-investment-group",
     sector: "Investment management",
@@ -243,6 +244,7 @@ export const PORTFOLIO: Company[] = [
   },
   {
     slug: "upwell",
+    image: { src: "/images/portfolio/upwell.jpg", width: 1142, height: 1500 },
     name: "Upwell",
     logo: "upwell",
     sector: "Functional Beverages",
@@ -264,6 +266,7 @@ export const PORTFOLIO: Company[] = [
   },
   {
     slug: "kopibat",
+    image: { src: "/images/portfolio/kopibat.jpg", width: 1058, height: 1500 },
     name: "Kopibat",
     logo: "kopibat",
     sector: "Real Estate · Engineering",
@@ -283,6 +286,7 @@ export const PORTFOLIO: Company[] = [
   },
   {
     slug: "goldish",
+    image: { src: "/images/portfolio/goldish.jpg", width: 1058, height: 1500 },
     name: "Goldish",
     logo: "goldish",
     sector: "Hospitality Technology",
