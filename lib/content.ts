@@ -195,13 +195,14 @@ export type Company = {
   role: string;
   impact: { value: string; label: string }[];
   footnotes?: string[];
-  // Set once the company's profile image is provided (public/images/portfolio/<slug>.jpg).
-  image?: string;
+  // The company's profile image (public/images/portfolio/<slug>.jpg), shown uncropped.
+  image?: { src: string; width: number; height: number };
 };
 
 export const PORTFOLIO: Company[] = [
   {
     slug: "multiflow",
+    image: { src: "/images/portfolio/multiflow.jpg", width: 1128, height: 1500 },
     name: "Multiflow Building Materials Trading",
     logo: "multiflow",
     sector: "Construction Material Trading and Manufacturing",
@@ -303,6 +304,7 @@ export const PORTFOLIO: Company[] = [
   },
   {
     slug: "puravida",
+    image: { src: "/images/portfolio/puravida.jpg", width: 1058, height: 1500 },
     name: "PuraVida",
     logo: "puravida",
     sector: "Lifestyle · Hospitality",
@@ -323,6 +325,7 @@ export const PORTFOLIO: Company[] = [
   },
   {
     slug: "rinov8",
+    image: { src: "/images/portfolio/rinov8.jpg", width: 1058, height: 1500 },
     name: "Rinov8 Group",
     logo: "rinov8",
     sector: "Events & Entertainment",
@@ -343,6 +346,7 @@ export const PORTFOLIO: Company[] = [
   },
   {
     slug: "myclinic",
+    image: { src: "/images/portfolio/myclinic.jpg", width: 978, height: 1500 },
     name: "MyClinic",
     logo: "myclinic",
     sector: "HealthTech · SaaS",
@@ -363,6 +367,7 @@ export const PORTFOLIO: Company[] = [
   },
   {
     slug: "virtualuniverse",
+    image: { src: "/images/portfolio/virtualuniverse.jpg", width: 1058, height: 1500 },
     name: "Virtual Universe",
     logo: "virtual-universe",
     sector: "VR · Entertainment",

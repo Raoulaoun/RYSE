@@ -36,8 +36,15 @@ export default async function CompanyPage({ params }: Props) {
         <div className="wrap">
           <div className="co-page-grid">
             {c.image ? (
-              <div className="co-page-img">
-                <Image src={c.image} alt={c.name} fill sizes="(min-width: 980px) 520px, 100vw" preload />
+              <div className="co-page-img real">
+                <Image
+                  src={c.image.src}
+                  alt={`${c.name} in pictures`}
+                  width={c.image.width}
+                  height={c.image.height}
+                  sizes="(min-width: 980px) 520px, 100vw"
+                  preload
+                />
               </div>
             ) : (
               <div className="co-page-img ph">
