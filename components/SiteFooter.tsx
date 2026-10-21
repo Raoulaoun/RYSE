@@ -2,33 +2,35 @@ import Link from "next/link";
 import { LogoLockup } from "./Logo";
 import { SITE } from "@/lib/site";
 
-export function HomeFooter() {
+export function HomeFooter({ base = "" }: { base?: string }) {
   return (
     <footer>
       <div className="wrap">
         <div className="foot">
           <div>
-            <a className="logo" href="#top" aria-label="Ryse Venture">
+            <a className="logo" href={base ? "/" : "#top"} aria-label="Ryse Venture">
               <LogoLockup />
             </a>
-            <p>We back founders before the world notices.</p>
+            <p>Where bold ideas RYSE.</p>
           </div>
           <div>
             <h4>Ryse</h4>
             <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#thesis">Thesis</a></li>
-              <li><a href="#partners">Partners</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href={`${base}#about`}>About</a></li>
+              <li><a href={`${base}#thesis`}>Thesis</a></li>
+              <li><a href={`${base}#approach`}>Approach</a></li>
+              <li><a href={`${base}#leadership`}>Leadership</a></li>
+              <li><a href={`${base}#portfolio`}>Portfolio</a></li>
             </ul>
           </div>
           <div>
             <h4>Founders</h4>
             <ul>
-              <li><a href="#how">How it works</a></li>
-              <li><a href="#get">What you get</a></li>
-              <li><a href="#faq">FAQ</a></li>
+              <li><a href={`${base}#how`}>How it works</a></li>
+              <li><a href={`${base}#who`}>Who can apply</a></li>
+              <li><a href={`${base}#faq`}>FAQ</a></li>
               <li><Link href="/apply">Apply</Link></li>
+              <li><Link href="/partner">Partner with us</Link></li>
             </ul>
           </div>
           <div>

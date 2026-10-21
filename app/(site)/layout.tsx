@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { ScrollState } from "@/components/ScrollState";
-import { spaceGrotesk, unbounded } from "@/lib/fonts";
+import { spaceGrotesk } from "@/lib/fonts";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -9,10 +9,10 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: "Ryse",
+  title: "Ryse — An incubator for early-stage startups",
   description,
   openGraph: {
-    title: "Ryse — We back founders before the world notices.",
+    title: "Ryse — Where bold ideas RYSE",
     description,
     url: SITE.url,
     siteName: "Ryse",
@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${unbounded.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={spaceGrotesk.variable}>
       <body>
         <ScrollState />
         {children}

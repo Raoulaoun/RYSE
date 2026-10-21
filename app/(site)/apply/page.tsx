@@ -31,7 +31,7 @@ export default function ApplyPage() {
               <li><div><b>Apply</b><span>Four short steps. Add your deck if you have one.</span></div></li>
               <li><div><b>Screening</b><span>The three partners review your application.</span></div></li>
               <li><div><b>Pitch meeting</b><span>Shortlisted founders pitch to the partners in person.</span></div></li>
-              <li><div><b>Decision</b><span>A clear answer within 48 hours of your pitch.</span></div></li>
+              <li><div><b>Decision</b><span>A clear investment decision within 48 hours of your pitch.</span></div></li>
             </ol>
             <div className="contact">
               <div>
