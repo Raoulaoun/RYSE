@@ -8,3 +8,6 @@ const mail = (subject: string) => `mailto:${SITE.email}?subject=${encodeURICompo
 
 export const APPLY_HREF = FORMS_ON ? "/apply" : mail("Founder application");
 export const PARTNER_HREF = FORMS_ON ? "/partner" : mail("Partnering with Ryse");
+
+// The pitch section always opens an email, whatever the build.
+export const PITCH_MAIL_HREF = mail("Pitch — [Startup name]");

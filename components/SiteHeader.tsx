@@ -27,7 +27,7 @@ export function HomeHeader({ base = "" }: { base?: string }) {
           ))}
         </nav>
         <a className="btn btn-primary" href={APPLY_HREF}>
-          <span className="dot"></span>Apply
+          <span className="dot"></span>Pitch your idea
         </a>
       </div>
     </header>

@@ -394,11 +394,7 @@ html.scrolled header.top .logo-dot { stroke: none; }
 
 /* apply band */
 .apply-band { display: grid; gap: 48px; align-items: center; }
-@media (min-width: 900px) { .apply-band { grid-template-columns: 1fr auto; gap: 72px; } }
 .apply-band .lede { color: var(--on-ink-muted); font-size: 18px; margin-top: 18px; max-width: 46ch; }
-.big48 { width: clamp(200px, 24vw, 280px); aspect-ratio: 1; border-radius: 50%; background: var(--signal); color: var(--ink); display: grid; place-content: center; text-align: center; gap: 6px; justify-self: center; }
-.big48 b { font-family: var(--display); font-weight: 700; font-size: clamp(64px, 8vw, 96px); line-height: 1; letter-spacing: -0.02em; }
-.big48 span { font-size: 13px; font-weight: 700; letter-spacing: 0.2em; }
 .apply-foot { margin-top: 56px; padding-top: 32px; border-top: 1px solid #2C2E2B; display: grid; gap: 32px; }
 @media (min-width: 900px) { .apply-foot { grid-template-columns: 1fr 1.6fr; align-items: center; } }
 .apply-foot .contact { margin: 0; padding: 0; border: 0; }
@@ -458,3 +454,10 @@ html.scrolled header.top .logo-dot { stroke: none; }
 .co-page-img.real { aspect-ratio: auto; background: var(--soft); }
 .co-page-img.real img { display: block; width: 100%; height: auto; }
 @media (max-width: 639px) { .co-page-img.real { aspect-ratio: auto; } }
+
+/* Feedback round (Oct 2026): single hero stat, full-width intros, pitch band without the circle */
+.hstats.single .hstat { grid-column: 2; }
+.sec-head.wide { max-width: none; }
+.sec-head.wide p { max-width: none; }
+.apply-band { grid-template-columns: 1fr; }
+.apply-band .lede { max-width: 60ch; }

@@ -17,10 +17,7 @@ export const LOGO_STRIP = [
   { src: "virtual-universe", name: "Virtual Universe" },
 ];
 
-export const HEADLINE_STATS = [
-  { value: "48h", label: "From pitch to investment decision" },
-  { value: "Day 0", label: "Is when we're ready to invest" },
-];
+export const HEADLINE_STATS = [{ value: "Day 0", label: "Is when we're ready to invest" }];
 
 export const THESIS: { icon: IconName; title: string; body: string }[] = [
   { icon: "award", title: "Founders over pedigree", body: "We judge ambition, speed and execution, not CVs, degrees or connections." },
@@ -28,33 +25,33 @@ export const THESIS: { icon: IconName; title: string; body: string }[] = [
   { icon: "anchor", title: "Built under pressure", body: "Companies born in hard markets learn discipline early." },
   { icon: "plus-circle", title: "More than an investor", body: "Capital opens the door. Strategy and hands-on support move the needle." },
   { icon: "globe", title: "Local proof, global scale", body: "Validate in Lebanon, build for the region, expand to the world." },
-  { icon: "zap", title: "Speed is respect", body: "Founders hear back within 48 hours. Their time matters as much as ours." },
+  { icon: "zap", title: "Speed is respect", body: "Founders hear back promptly. Their time matters as much as ours." },
 ];
 
 export const PHILOSOPHY: { img: string; alt: string; pos: string; icon: IconName; title: string; body: string }[] = [
-  {
-    img: "/images/benefit-capital.jpg",
-    alt: "A handshake closing an investment",
-    pos: "55% 50%",
-    icon: "dollar",
-    title: "Capital",
-    body: "Financial support to build, test and reach first revenue, without waiting for traction you can't yet show.",
-  },
   {
     img: "/images/benefit-strategy.jpg",
     alt: "A mentor walking a founder through a strategy board",
     pos: "68% 40%",
     icon: "compass",
-    title: "Strategy",
-    body: "Direct guidance from three partners who have started, operated, sold and advised companies across the region.",
+    title: "Strategic guidance",
+    body: "Direct guidance from partners who have started, operated, sold and advised companies across the region.",
   },
   {
     img: "/images/benefit-growth.jpg",
     alt: "A startup team reviewing growth on a screen",
     pos: "55% 40%",
     icon: "trending-up",
-    title: "Support for Growth",
-    body: "Hands-on support from Ryse's functional departments, so you never worry about marketing, branding, finance, and product and tech.",
+    title: "Hands-on support",
+    body: "Our functional teams work alongside you on marketing, branding, finance, and product and tech, so you can focus on building.",
+  },
+  {
+    img: "/images/benefit-capital.jpg",
+    alt: "A founder and an investor shaking hands",
+    pos: "55% 50%",
+    icon: "dollar",
+    title: "Attracting investors",
+    body: "When your business is ready, we help you build a credible investment case and connect you with the right investors.",
   },
 ];
 
@@ -398,7 +395,7 @@ export const STEPS = [
   { title: "Apply", body: "Online, or through a Ryse campaign.", when: "Takes about 5 minutes" },
   {
     title: "Screening",
-    body: "The three partners review every application themselves, against our investment thesis.",
+    body: "Every application is reviewed by the partners against our investment thesis.",
     when: "Reviewed by the partners",
   },
   {
@@ -409,7 +406,7 @@ export const STEPS = [
   {
     title: "Decision",
     body: "You receive a clear answer with honest feedback, whatever the outcome.",
-    when: "Within 48 hours",
+    when: "Promptly",
   },
 ];
 
@@ -450,11 +447,7 @@ export const FAQ = [
   },
   {
     q: "How fast will I hear back?",
-    a: "You receive an investment decision within 48 hours of your in-person pitch, with honest feedback whatever the answer.",
-  },
-  {
-    q: "What support do I get after investment?",
-    a: "Financial support plus hands-on work with the partners and the Ryse departments: strategy, growth and brand, finance and legal, and product and tech.",
+    a: "Promptly. After your pitch, you receive a clear answer with honest feedback, whatever the outcome.",
   },
   {
     q: "Do you only back Lebanese companies?",

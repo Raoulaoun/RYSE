@@ -153,7 +153,7 @@ export async function POST(request: Request) {
     await sendMail({
       to: d.email,
       subject: `We received your application: ${ref}`,
-      text: `Hi ${d.full_name.split(/\s+/)[0]},\n\nThank you for applying to Ryse with ${d.startup_name}. Your reference number is ${ref}.\n\nWhat happens next:\n1. The partners review your application personally.\n2. If you're shortlisted, we invite you to pitch in person.\n3. You get a clear answer within 48 hours of your pitch.\n\nQuestions? Reply to this email.\n\nThe Ryse partners`,
+      text: `Hi ${d.full_name.split(/\s+/)[0]},\n\nThank you for applying to Ryse with ${d.startup_name}. Your reference number is ${ref}.\n\nWhat happens next:\n1. The partners review your application personally.\n2. If you're shortlisted, we invite you to pitch in person.\n3. You get a clear answer promptly after your pitch.\n\nQuestions? Reply to this email.\n\nThe Ryse partners`,
     }).catch((err) => console.error("Failed to send application confirmation", err));
     return NextResponse.json({ ok: true, refNo: ref });
   } catch (err) {

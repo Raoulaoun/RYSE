@@ -17,7 +17,7 @@ import {
   THESIS,
   WHO,
 } from "@/lib/content";
-import { APPLY_HREF, FORMS_ON } from "@/lib/links";
+import { APPLY_HREF, PITCH_MAIL_HREF } from "@/lib/links";
 import { SITE } from "@/lib/site";
 
 function Tiles() {
@@ -64,16 +64,16 @@ export default function Home() {
                   <p className="lede">An incubator for early-stage startups</p>
                   <div className="ctas">
                     <a className="btn btn-signal" href={APPLY_HREF}>
-                      Apply to Ryse
+                      Pitch Your Idea
                     </a>
                     <a className="btn btn-glass" href="#how">
                       How it works
                     </a>
                   </div>
                 </div>
-                <div className="hstats">
-                  {HEADLINE_STATS.map((s, i) => (
-                    <div className={"hstat" + (i === 0 ? " lime" : "")} key={s.value}>
+                <div className="hstats single">
+                  {HEADLINE_STATS.map((s) => (
+                    <div className="hstat" key={s.value}>
                       <b>{s.value}</b>
                       <span>{s.label}</span>
                     </div>
@@ -87,7 +87,7 @@ export default function Home() {
         {/* LOGO STRIP */}
         <div className="strip">
           <div className="wrap">
-            <p>Companies built and backed by the Ryse partners</p>
+            <p>Companies built and backed by the Ryse team</p>
             <div className="logos">
               {LOGO_STRIP.map((l) => (
                 <div className="logo-slot" key={l.src}>
@@ -147,9 +147,13 @@ export default function Home() {
         {/* OUR PHILOSOPHY */}
         <section id="philosophy" style={{ paddingTop: 0 }}>
           <div className="wrap">
-            <div className="sec-head">
-              <span className="eyebrow">Our philosophy</span>
-              <h2>Capital is where our support starts but not where it ends</h2>
+            <div className="sec-head wide">
+              <span className="eyebrow">What we bring in</span>
+              <h2>Our support spans the full range of what you need</h2>
+              <p>
+                We bring the experience, strategic guidance, and hands-on support to help ambitious founders build and
+                scale their businesses, and we help attract investors when the time is right.
+              </p>
             </div>
             <div className="ben-grid">
               {PHILOSOPHY.map((b) => (
@@ -199,7 +203,7 @@ export default function Home() {
         <section id="leadership" className="ink-band" style={{ paddingTop: 0 }}>
           <div className="wrap">
             <div className="leaders-head" />
-            <div className="sec-head">
+            <div className="sec-head wide">
               <span className="eyebrow">Leadership</span>
               <h2>Built by founders, for founders</h2>
               <p>
@@ -271,7 +275,7 @@ export default function Home() {
         {/* PORTFOLIO */}
         <section id="portfolio" className="soft">
           <div className="wrap">
-            <div className="sec-head">
+            <div className="sec-head wide">
               <span className="eyebrow">Portfolio</span>
               <h2>Companies we&apos;ve built and backed</h2>
               <p>
@@ -394,18 +398,14 @@ export default function Home() {
                   Building something? <span>Pitch it.</span>
                 </h2>
                 <p className="lede">
-                  Applications are open all year. The partners read every one, and you hear back within 48 hours of your
+                  Applications are open all year. The partners read every one, and you hear back promptly after your
                   pitch.
                 </p>
                 <div className="ctas" style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 30 }}>
-                  <a className="btn btn-signal" href={APPLY_HREF}>
-                    {FORMS_ON ? `Apply at ${SITE.domain}` : `Email your pitch to ${SITE.email}`}
+                  <a className="btn btn-signal" href={PITCH_MAIL_HREF}>
+                    Pitch Your Idea Here
                   </a>
                 </div>
-              </div>
-              <div className="big48" aria-label="48 hours to hear back">
-                <b>48h</b>
-                <span>TO HEAR BACK</span>
               </div>
             </div>
             <div className="apply-foot">

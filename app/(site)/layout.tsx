@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 import "./globals.css";
 
 const description =
-  "Ryse invests early in ambitious founders, meets them in person, and decides within 48 hours. Capital, strategy and hands-on support for startups in Lebanon and the region.";
+  "Ryse is an incubator for early-stage startups in Lebanon and the region: experience, strategic guidance and hands-on support for ambitious founders, and help attracting investors when the time is right.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),

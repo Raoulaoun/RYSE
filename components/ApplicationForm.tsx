@@ -679,7 +679,7 @@ export function ApplicationForm() {
         <ol>
           <li>The partners review your application personally.</li>
           <li>If you&apos;re shortlisted, we invite you to pitch in person.</li>
-          <li>You get a clear answer within 48 hours of your pitch.</li>
+          <li>You get a clear answer promptly after your pitch.</li>
         </ol>
         <p className="hint">
           A confirmation email is on its way to <b>{done?.email}</b>.
