@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getDb, schema } from "@/lib/db";
 import { sendMail } from "@/lib/mail";
+import { notifyPartner } from "@/lib/notify";
 import { partnerSchema } from "@/lib/validation";
 
 export const runtime = "nodejs";
@@ -42,6 +43,7 @@ export async function POST(request: Request) {
         message: d.message,
         consentAt: new Date(),
       });
+    await notifyPartner(d).catch((err) => console.error("Failed to notify the team of a partner inquiry", err));
     await sendMail({
       to: d.email,
       subject: "Thanks for reaching out to Ryse",

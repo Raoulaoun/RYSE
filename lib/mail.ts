@@ -51,6 +51,9 @@ export function textToHtml(text: string) {
 }
 
 export function appUrl(path = "") {
-  const base = process.env.APP_URL ?? (process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : "http://localhost:3000");
+  const base =
+    process.env.APP_URL ??
+    process.env.RENDER_EXTERNAL_URL ??
+    (process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : "http://localhost:3000");
   return base.replace(/\/$/, "") + path;
 }

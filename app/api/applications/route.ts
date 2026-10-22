@@ -3,6 +3,7 @@ import { getDb, schema } from "@/lib/db";
 import { eq } from "drizzle-orm";
 import { DECK_EXT, DECK_MAX_BYTES } from "@/lib/options";
 import { sendMail } from "@/lib/mail";
+import { notifyApplication } from "@/lib/notify";
 import { applicationSchema } from "@/lib/validation";
 
 export const runtime = "nodejs";
@@ -100,7 +101,7 @@ export async function POST(request: Request) {
 
   try {
     const db = getDb();
-    const ref = await db.transaction(async (tx) => {
+    const { ref, deckId } = await db.transaction(async (tx) => {
       const now = new Date();
       const [row] = await tx
         .insert(schema.applications)
@@ -135,10 +136,20 @@ export async function POST(request: Request) {
         .returning({ id: schema.applications.id });
       const ref = refNo(row.id, now.getFullYear());
       await tx.update(schema.applications).set({ refNo: ref }).where(eq(schema.applications.id, row.id));
-      if (deckRow) await tx.insert(schema.applicationDecks).values({ applicationId: row.id, ...deckRow });
+      const [deckSaved] = deckRow
+        ? await tx
+            .insert(schema.applicationDecks)
+            .values({ applicationId: row.id, ...deckRow })
+            .returning({ id: schema.applicationDecks.id })
+        : [];
       await tx.insert(schema.applicationEvents).values({ applicationId: row.id, what: "Application submitted" });
-      return ref;
+      return { ref, deckId: deckSaved?.id ?? null };
     });
+    await notifyApplication(
+      d,
+      ref,
+      deckRow && deckId ? { id: deckId, filename: deckRow.filename, sizeBytes: deckRow.sizeBytes } : null,
+    ).catch((err) => console.error("Failed to notify the team of an application", err));
     await sendMail({
       to: d.email,
       subject: `We received your application: ${ref}`,
