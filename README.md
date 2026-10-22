@@ -5,7 +5,7 @@ Marketing site and founder/partner intake for Ryse (ryseventure.com).
 - **Next.js 16** (App Router, TypeScript)
 - **Postgres** via Drizzle ORM. Founder applications, pitch decks and partner inquiries are stored here.
 - Styles are the design's own CSS (`app/globals.css`), kept 1:1 with the approved design.
-- Fonts (Unbounded, Space Grotesk) are self-hosted at build time with `next/font`.
+- Fonts (Space Grotesk, plus Unbounded for the admin) ship in `fonts/` (SIL Open Font License) and load with `next/font/local`, so builds never contact Google.
 
 ## Pages
 
