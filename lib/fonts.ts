@@ -1,8 +1,17 @@
-import { Space_Grotesk, Unbounded } from "next/font/google";
+import localFont from "next/font/local";
 
-export const unbounded = Unbounded({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-unbounded" });
-export const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+// Self-hosted copies of the Google fonts (SIL Open Font License, see fonts/),
+// so builds never depend on reaching fonts.googleapis.com.
+export const unbounded = localFont({
+  src: "../fonts/Unbounded-latin.woff2",
+  weight: "200 900",
+  variable: "--font-unbounded",
+  display: "swap",
+});
+
+export const spaceGrotesk = localFont({
+  src: "../fonts/SpaceGrotesk-latin.woff2",
+  weight: "300 700",
   variable: "--font-space-grotesk",
+  display: "swap",
 });
