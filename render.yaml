@@ -1,37 +1,14 @@
-# Render Blueprint: the marketing site plus its Postgres database.
-# The admin panel stays off (ADMIN_ENABLED is not "true"); new applications and
-# partner messages are saved in the database and emailed to NOTIFY_EMAIL.
+# Render Blueprint: the marketing site as a free static site (no forms, no admin).
+# Apply and Partner buttons open an email to hello@ryseventure.com.
+# The full app with forms, database and admin is in render.full.yaml; rename it
+# to render.yaml to use it (paid plans).
 services:
   - type: web
-    name: ryse-web
-    runtime: node
-    plan: 0.5c-512mb
-    region: frankfurt
+    name: ryse-site
+    runtime: static
     branch: claude/vibrant-tesla-j4ymni
-    buildCommand: npm ci && npm run build
-    # Migrations run before the server starts, so this works on any plan.
-    startCommand: npm run db:migrate && npm start
-    healthCheckPath: /
+    buildCommand: npm ci && npm run build:static
+    staticPublishPath: ./out
     envVars:
       - key: NODE_VERSION
         value: "22"
-      - key: DATABASE_URL
-        fromDatabase:
-          name: ryse-db
-          property: connectionString
-      - key: NOTIFY_EMAIL
-        value: hello@ryseventure.com
-      - key: ADMIN_ENABLED
-        value: "false"
-      - key: DECK_LINK_SECRET
-        generateValue: true
-      - key: BREVO_API_KEY
-        sync: false
-
-databases:
-  - name: ryse-db
-    plan: 0.1c-256mb
-    region: frankfurt
-    databaseName: ryse
-    user: ryse
-    postgresMajorVersion: "17"

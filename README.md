@@ -77,9 +77,21 @@ Tables (see `lib/db/schema.ts`):
 
 To change the schema, edit `lib/db/schema.ts`, then run `npm run db:generate` and commit the new file in `drizzle/`. Migrations apply automatically on deploy.
 
-## Deploying on Render (marketing site only)
+## Free static site (no forms, no admin)
 
-`render.yaml` is a Render Blueprint for the site and its database, with the admin panel off.
+`npm run build:static` exports the marketing pages as plain files in `out/`: the home page and the nine portfolio pages. The forms, admin and server routes are left out, and every Apply and Partner button opens an email to hello@ryseventure.com instead.
+
+On Render: **New → Static Site**, pick this repo and branch, then:
+
+- Build command: `npm ci && npm run build:static`
+- Publish directory: `out`
+- Environment variable: `NODE_VERSION` = `22`
+
+`render.yaml` describes the same thing as a Blueprint. Add `ryseventure.com` under **Settings → Custom Domains** and the DNS records Render shows.
+
+## Deploying on Render with forms (paid)
+
+`render.full.yaml` is a Render Blueprint for the full site and its database, with the admin panel off. Rename it to `render.yaml` to use it.
 
 1. In Render, **New → Blueprint**, connect the GitHub repo, and pick this branch.
 2. Render reads `render.yaml` and creates `ryse-web` (web service) and `ryse-db` (Postgres), both in Frankfurt. When asked for `BREVO_API_KEY`, paste your Brevo key.

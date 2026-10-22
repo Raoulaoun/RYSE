@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { APPLY_HREF } from "@/lib/links";
 import { LogoMark } from "./Logo";
 
 const NAV = [
@@ -25,9 +26,9 @@ export function HomeHeader({ base = "" }: { base?: string }) {
             </a>
           ))}
         </nav>
-        <Link className="btn btn-primary" href="/apply">
+        <a className="btn btn-primary" href={APPLY_HREF}>
           <span className="dot"></span>Apply
-        </Link>
+        </a>
       </div>
     </header>
   );

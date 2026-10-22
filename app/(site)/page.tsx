@@ -17,6 +17,7 @@ import {
   THESIS,
   WHO,
 } from "@/lib/content";
+import { APPLY_HREF, FORMS_ON } from "@/lib/links";
 import { SITE } from "@/lib/site";
 
 function Tiles() {
@@ -62,9 +63,9 @@ export default function Home() {
                   </h1>
                   <p className="lede">An incubator for early-stage startups</p>
                   <div className="ctas">
-                    <Link className="btn btn-signal" href="/apply">
+                    <a className="btn btn-signal" href={APPLY_HREF}>
                       Apply to Ryse
-                    </Link>
+                    </a>
                     <a className="btn btn-glass" href="#how">
                       How it works
                     </a>
@@ -397,9 +398,9 @@ export default function Home() {
                   pitch.
                 </p>
                 <div className="ctas" style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 30 }}>
-                  <Link className="btn btn-signal" href="/apply">
-                    Apply at {SITE.domain}
-                  </Link>
+                  <a className="btn btn-signal" href={APPLY_HREF}>
+                    {FORMS_ON ? `Apply at ${SITE.domain}` : `Email your pitch to ${SITE.email}`}
+                  </a>
                 </div>
               </div>
               <div className="big48" aria-label="48 hours to hear back">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LogoLockup } from "./Logo";
+import { APPLY_HREF, PARTNER_HREF } from "@/lib/links";
 import { SITE } from "@/lib/site";
 
 export function HomeFooter({ base = "" }: { base?: string }) {
@@ -29,8 +30,8 @@ export function HomeFooter({ base = "" }: { base?: string }) {
               <li><a href={`${base}#how`}>How it works</a></li>
               <li><a href={`${base}#who`}>Who can apply</a></li>
               <li><a href={`${base}#faq`}>FAQ</a></li>
-              <li><Link href="/apply">Apply</Link></li>
-              <li><Link href="/partner">Partner with us</Link></li>
+              <li><a href={APPLY_HREF}>Apply</a></li>
+              <li><a href={PARTNER_HREF}>Partner with us</a></li>
             </ul>
           </div>
           <div>

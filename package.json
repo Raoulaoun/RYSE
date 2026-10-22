@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/migrate.mjs",
-    "admin:add": "node scripts/add-admin.mjs"
+    "admin:add": "node scripts/add-admin.mjs",
+    "build:static": "node scripts/build-static.mjs"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.4",
