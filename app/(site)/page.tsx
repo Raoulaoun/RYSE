@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { CopyEmail } from "@/components/CopyButton";
 import { IconCircle } from "@/components/Icon";
+import { PortfolioGrid } from "@/components/PortfolioGrid";
 import { HomeFooter } from "@/components/SiteFooter";
 import { HomeHeader } from "@/components/SiteHeader";
 import {
@@ -283,21 +283,7 @@ export default function Home() {
                 hospitality, entertainment and real estate. The same playbook now goes to every founder we back.
               </p>
             </div>
-            <div className="port-grid">
-              {PORTFOLIO.map((c) => (
-                <Link className="co" href={`/portfolio/${c.slug}`} key={c.slug}>
-                  <span className="co-logo">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={`/images/logos/${c.logo}.png`} alt="" loading="lazy" />
-                  </span>
-                  <span className="co-text">
-                    <h3>{c.name}</h3>
-                    <span className="sector">{c.sector}</span>
-                    {c.exited && <span className="pill-exited">Exited</span>}
-                  </span>
-                </Link>
-              ))}
-            </div>
+            <PortfolioGrid companies={PORTFOLIO} />
           </div>
         </section>
 

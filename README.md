@@ -17,7 +17,7 @@ Marketing site and founder/partner intake for Ryse (ryseventure.com).
 | `POST /api/applications` | Saves an application (multipart, deck up to 15 MB). Returns `RYS-YYYY-NNNN` |
 | `POST /api/partners`     | Saves a partner inquiry (JSON)                                  |
 | `/partner`          | Partner form for universities, co-investors, corporates and mentors (`?type=` preselects) |
-| `/portfolio/<slug>` | One page per portfolio company                                      |
+| `/#portfolio-<slug>` | Opens that company's details inline in the homepage portfolio (old `/portfolio/<slug>` pages redirect here) |
 | `/admin`            | Partner admin panel (sign-in required, and only when `ADMIN_ENABLED=true`) |
 
 ## Local development
@@ -79,7 +79,7 @@ To change the schema, edit `lib/db/schema.ts`, then run `npm run db:generate` an
 
 ## Free static site (no forms, no admin)
 
-`npm run build:static` exports the marketing pages as plain files in `out/`: the home page and the nine portfolio pages. The forms, admin and server routes are left out, and every Apply and Partner button opens an email to hello@ryseventure.com instead.
+`npm run build:static` exports the marketing pages as plain files in `out/`: the home page (company details open inline) and the nine old portfolio addresses, which redirect to it. The forms, admin and server routes are left out, and every Apply and Partner button opens an email to hello@ryseventure.com instead.
 
 On Render: **New → Static Site**, pick this repo and branch, then:
 
